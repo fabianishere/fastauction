@@ -24,6 +24,7 @@ package com.github.fabianishere.fastauction
 
 import jdk.incubator.vector.*
 import kotlin.math.max
+import kotlin.math.min
 
 
 /**
@@ -110,6 +111,7 @@ public class AuctionSolverExactSIMD : AuctionSolver {
         // 1. Enumerate each possible allocation `u` in the first set
         // 2. Determine the optimal assignment of this allocation by calculating the revenue
         //    of each possible assignment to either `S` or `Sp`.
+        // O(4^k)
         for (u in 1 until S.size) {
             // Note: we use bit manipulations to obtain the permutations of toggled bits in `u`.
             // Suppose we have the allocation 0101. We want to obtain every possible
